@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="FIXIT — Security Audit: prototipo académico de clasificación y revisión de evidencias de seguridad web.">
+  <title>FIXIT — Security Audit</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230b1220%27/%3E%3Cpath d=%27M16 6l8 3v6c0 5-3.5 8.4-8 9.5-4.5-1.1-8-4.5-8-9.5V9z%27 fill=%27none%27 stroke=%27%232ec5dc%27 stroke-width=%272.4%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/audit.css">
+</head>
+<body>
+  <a class="skip" href="#content">Saltar al contenido</a>
+  <div class="shell">
+    <aside id="sidebar" class="sidebar" aria-label="Navegación principal">
+      <div class="sidebar-top">
+        <a class="brand" href="#/dashboard" aria-label="FIXIT Security Audit, ir al panel">
+          <span class="brand-mark" data-icon="shield"></span>
+          <span class="brand-text"><b>FIXIT</b><small>Security Audit</small></span>
+        </a>
+        <button type="button" class="icon-btn sidebar-close" data-action="toggle-menu" aria-label="Cerrar menú"><span data-icon="x"></span></button>
+      </div>
+      <nav id="nav" aria-label="Secciones"></nav>
+      <div class="sidebar-foot">
+        <div class="role-box">
+          <label for="role-select">Rol de demostración</label>
+          <select id="role-select" data-change="role">
+            <option value="estudiante">Estudiante</option>
+            <option value="auditor">Auditor / Docente</option>
+          </select>
+          <p class="role-hint">Simulación de interfaz. No es autenticación ni un control de acceso real.</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-block" data-action="reset-demo"><span data-icon="restore"></span>Restaurar datos demo</button>
+      </div>
+    </aside>
+    <div class="scrim" data-action="toggle-menu" hidden></div>
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="icon-btn menu-btn" data-action="toggle-menu" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false"><span data-icon="menu"></span></button>
+        <div class="topbar-title">
+          <p class="topbar-app"><b>FIXIT</b> <span aria-hidden="true">—</span> Security Audit</p>
+          <h1 id="page-title">Panel de auditoría</h1>
+        </div>
+        <div class="topbar-meta">
+          <span class="meta-date" title="Fecha de demostración"><span data-icon="calendar"></span><span id="demo-date"></span></span>
+          <span class="meta-role" id="role-chip" title="Rol de demostración activo"></span>
+          <span class="demo-badge">MODO DEMOSTRACIÓN</span>
+        </div>
+      </header>
+      <div id="storage-warning" class="banner banner-warn storage-warning" role="status" hidden></div>
+      <main id="content" class="content" tabindex="-1"></main>
+      <footer class="app-foot">
+        <p><span data-icon="info"></span><span><b>Prototipo académico de apoyo a la auditoría.</b> Las clasificaciones son orientativas y deben contrastarse con la evidencia y el contexto. La evaluación y validación final corresponden al auditor humano.</span></p>
+        <p class="muted small">Sistema de clasificación y revisión de evidencias de seguridad web · Funciona solo en el navegador: sin backend, sin servicios externos y sin IA. Los datos se guardan en localStorage, que no es un almacenamiento seguro para información sensible.</p>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div>
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <dialog id="dialog" class="dialog" aria-labelledby="dialog-title">
+    <form method="dialog" class="dialog-inner">
+      <h2 id="dialog-title"></h2>
+      <div id="dialog-body" class="dialog-body"></div>
+      <div class="dialog-actions">
+        <button type="submit" value="cancel" class="btn btn-secondary" id="dialog-cancel">Cancelar</button>
+        <button type="submit" value="ok" class="btn btn-primary" id="dialog-ok">Confirmar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/owasp.js"></script>
+  <script src="js/rules.js"></script>
+  <script src="js/classifier.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
